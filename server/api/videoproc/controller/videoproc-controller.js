@@ -1,5 +1,6 @@
 import fs from 'fs';
 import StorageConfig from '../../../config/storage.conf';
+import ImageProcessor from './image_processor.js';
 
 export default class VideoprocController {
   static uploadImage(req, res) {
@@ -22,6 +23,7 @@ export default class VideoprocController {
           if (err) {
             return res.status(500).end();
           }
+          ImageProcessor.runProgram(path);
           return res.status(200).end();
         });
       } else {

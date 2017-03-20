@@ -32,7 +32,8 @@
     "mongoose": "^4.4.7",
     "morgan": "^1.5.2",
     "newrelic": "^1.18.2",
-    "nodemon": "^1.9.2"
+    "nodemon": "^1.9.2",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "aliv": "^1.6.0",

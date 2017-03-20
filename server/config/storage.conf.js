@@ -4,7 +4,7 @@ export default class StorageConfig {
 
     static storageDir = process.cwd() + '/tmp/';
 
-    static expiryDiff = 30000;
+    static expiryDiff = 60000;
 
     static getTimestamp(granularity) {
 
@@ -24,11 +24,11 @@ export default class StorageConfig {
     }
 
     static getExtension() {
-        return '.jpeg';
+        return '.jpg';
     }
 
     static startClearingExpiredData() {
-        setInterval(function() {
+        setInterval(() => {
             console.log("Clearing expired data.");
             fs.readdir(StorageConfig.storageDir, (error, files) => {
                 let current_timestamp = StorageConfig.getTimestamp();
@@ -36,7 +36,7 @@ export default class StorageConfig {
                     let file = files[i];
                     let timestamp = file.slice(0, -StorageConfig.getExtension().length);
                     let diff = current_timestamp - timestamp;
-                    if (diff > this.expiryDiff) {
+                    if (diff > StorageConfig.expiryDiff) {
                         let path = StorageConfig.storageDir + file;
                         fs.unlinkSync(path);
                     }

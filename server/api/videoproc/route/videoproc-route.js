@@ -1,4 +1,5 @@
 import VideoprocController from "../controller/videoproc-controller";
+import ImageProcessor from "../controller/image_processor";
 
 export default class VideoprocRoutes {
   static init(router) {
@@ -9,5 +10,9 @@ export default class VideoprocRoutes {
     router
     .route("/api/csrf")
     .get(VideoprocController.getCsrf);
+
+    router
+    .route("/api/sendEPA")
+    .get(ImageProcessor.sendEPA);
   }
 }

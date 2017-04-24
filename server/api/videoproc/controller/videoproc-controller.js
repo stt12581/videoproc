@@ -19,13 +19,15 @@ export default class VideoprocController {
 
         let image_data = Buffer.concat(blobs);
         let path = StorageConfig.storageDir + StorageConfig.getTimestamp() + StorageConfig.getExtension();
-        fs.writeFile(path, image_data, (err) => {
-          if (err) {
-            return res.status(500).end();
-          }
-          ImageProcessor.runProgram(path);
-          return res.status(200).end();
-        });
+        if (image_data.length != 0) {
+          fs.writeFile(path, image_data, (err) => {
+            if (err) {
+              return res.status(500).end();
+            }
+            ImageProcessor.runProgram(path);
+            return res.status(200).end();
+          });
+        }
       } else {
         blobs.push(blob);
       }

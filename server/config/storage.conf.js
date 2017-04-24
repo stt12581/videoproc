@@ -29,7 +29,7 @@ export default class StorageConfig {
 
     static startClearingExpiredData() {
         setInterval(() => {
-            console.log("Clearing expired data.");
+            //console.log("Clearing expired data.");
             fs.readdir(StorageConfig.storageDir, (error, files) => {
                 let current_timestamp = StorageConfig.getTimestamp();
                 for (let i = 0, len = files.length; i < len; ++i) {

@@ -18,8 +18,9 @@ export default class ImageProcessor {
       
       var request2 = require('request');
       const url2 = 'http://localhost:8080';
+
       request2.post({uri: url2, body:content}, function (error, response, body) {
-        console.log('Received EPA from LSTM:', body);
+        console.log('Received EPA from LSTM: ', body);
         total_result.push(body);
       });
     });
